@@ -1,4 +1,4 @@
-﻿namespace WODTasticMobile
+﻿namespace MeetingPlanner
 {
     public static class ToLangCulture
     {

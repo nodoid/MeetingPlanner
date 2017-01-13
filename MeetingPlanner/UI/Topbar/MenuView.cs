@@ -1,14 +1,24 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 using System.Collections.Generic;
+using MeetingPlanner.Languages;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Net.Http;
 using System;
+#if DEBUG
+using System.Diagnostics;
+#endif
+using System.Net;
 
-namespace turtlewax
+namespace MeetingPlanner
 {
     public class MenuListClass
     {
         public string image { get; set; }
 
         public string text { get; set; }
+
+        public bool enabled { get; set; } = true;
     }
 
     public class MenuView : ContentView
@@ -19,41 +29,14 @@ namespace turtlewax
         {
             menuList = new List<MenuListClass>
             {
-                new MenuListClass { text = LangResources.MainThreeScan, image = "SCAN_A_PRODUCT.png" },
-                new MenuListClass { text = LangResources.MainThreeExplorer, image = "PRODUCT_EXPLORER.png" },
-                new MenuListClass { text = LangResources.MainWhereToBuy, image = "WHERE_TO_BUY.png" },
-                new MenuListClass { text = LangResources.RegionalSettings, image = "regional.png" },
-                new MenuListClass { image = "favourites_settings.png", text = LangResources.Favourites },
+                new MenuListClass { text = Langs.Menu_NewMeeting, image = "Add48" },
+                new MenuListClass { text = Langs.Menu_Upcoming, image = "CalendarDate0248" },
+                new MenuListClass { text = Langs.Menu_Cancel, image = "Close48" },
+                new MenuListClass { text = Langs.Menu_Pending, image = "get_info" },
+                new MenuListClass { text = Langs.Menu_CheckForMeetings, image = "newmeeting" },
+                new MenuListClass { text = Langs.Menu_Logout, image="logout" },
+                new MenuListClass { text = Langs.Menu_Help, image="help" },
             };
-
-            /*listView.ItemSelected += async (object sender, SelectedItemChangedEventArgs e) =>
-            {
-                var selected = e.SelectedItem as MenuListClass;
-                Page page = null;
-                if (selected != null)
-                {
-                    if (selected.text == LangResources.MainThreeScan)
-                        page = new HowToScan();
-                    else if (selected.text == LangResources.MainThreeExplorer)
-                        page = new ProductMenu();
-                    else if (selected.text == LangResources.MainWhereToBuy)
-                        page = new buyFromPage();
-                    else if (selected.text == LangResources.RegionalSettings)
-                        page = new RegionalSettings();
-                    else
-                        page = new FavouriteUI();
-
-                    if (page != null)
-                    {
-                        MessagingCenter.Send(this, "Menu", "Close");
-                        await Navigation.PushAsync(page).ContinueWith((t) =>
-                            {
-                                if (t.IsCompleted)
-                                    Device.BeginInvokeOnMainThread(() => listView.SelectedItem = null);  
-                            });
-                    }
-                }
-            };*/
 
             var masterStack = new StackLayout
             {
@@ -62,10 +45,28 @@ namespace turtlewax
                 MinimumWidthRequest = App.ScreenSize.Width * .85,
                 WidthRequest = App.ScreenSize.Width * .85,
                 HeightRequest = App.ScreenSize.Height /*- 52 - 36*/,
+                TranslationY = 8,
+                StyleId = "menu"
             };
             for (var i = 0; i < menuList.Count; ++i)
                 masterStack.Children.Add(MenuListView(i));
 
+            var polls = App.Self.DBManager.GetListOfObjects<AppointmentList>();
+            var num = 0;
+            foreach (var p in polls)
+            {
+                try
+                {
+                    num += AppointmentListHelpers.GetMeeting(p.MeetingId).IsMyMeeting;
+                }
+                catch (Exception)
+                {
+                    break;
+                }
+            }
+
+            if (num == 0)
+                menuList[1].enabled = false;
 
             Content = masterStack;
         }
@@ -79,42 +80,63 @@ namespace turtlewax
                 Source = menuList[i].image
             };
 
-            var lblText = new CustomLabel
+            var lblText = new Label
             {
-                FontFamily = Constants.TradeGothic,
                 FontSize = 18,
                 VerticalTextAlignment = TextAlignment.Center,
-                TextColor = Constants.MainCopy,
+                TextColor = Constants.NELFTBlue,
                 Text = menuList[i].text
             };
 
             var tap = new TapGestureRecognizer
             {
                 NumberOfTapsRequired = 1,
-                Command = new Command(async(t) =>
+                Command = new Command(async (t) =>
                     {
                         MessagingCenter.Send(this, "Menu", "Close");
                         Page page = null;
                         switch (i)
                         {
                             case 0:
-                                page = new HowToScan();
+                                page = new NewMeeting();
                                 break;
                             case 1:
-                                page = new ProductMenu();
+                                page = new UpComingMeeting();
                                 break;
                             case 2:
-                                page = new BuyFromPage();
+                                page = new CancelMeeting();
                                 break;
                             case 3:
-                                page = new RegionalSettings();
+                                page = new PendingMeeting();
                                 break;
                             case 4:
-                                page = new FavouriteUI();
+                                await DataGatherer.GetDataGatherForDates();
+                                break;
+                            case 5:
+                                if (await Application.Current.MainPage.DisplayAlert(Langs.Logout_Title, Langs.Logout_Message, Langs.General_OK, Langs.General_Cancel))
+                                {
+                                    await Logout(App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String), App.Self.UserSettings.LoadSetting<string>("Password", SettingType.String)).ContinueWith((y) =>
+                                    {
+                                        if (y.IsCompleted)
+                                        {
+                                            Device.BeginInvokeOnMainThread(() =>
+                                            {
+                                                App.Self.UserSettings.SaveSetting("Username", string.Empty, SettingType.String);
+                                                App.Self.UserSettings.SaveSetting("Password", string.Empty, SettingType.String);
+                                                Application.Current.MainPage = new Login();
+                                            });
+                                        }
+                                    });
+
+                                    //await Navigation.PushAsync(Application.Current.MainPage);
+                                }
+                                break;
+                            case 6:
+                                await Application.Current.MainPage.DisplayAlert(Langs.Help_Title, string.Format("{0} {1}\n\n{2}", Langs.Help_Version, Constants.Version, Langs.Help_Message), Langs.General_OK);
                                 break;
                         }
-
-                        await Navigation.PushAsync(page);
+                        if (i < 4)
+                            await Navigation.PushAsync(page);
                     }
                 )
             };
@@ -124,13 +146,13 @@ namespace turtlewax
                 Orientation = StackOrientation.Vertical,
                 Padding = new Thickness(0, 4, 0, 0),
                 Children =
-                { 
+                {
                     new StackLayout
                     {
                         Padding = new Thickness(8),
                         Orientation = StackOrientation.Horizontal,
                         Children =
-                        { imgIcon, 
+                        { imgIcon,
                             new StackLayout
                             {
                                 Padding = new Thickness(8, 0, 0, 0),
@@ -150,6 +172,19 @@ namespace turtlewax
             stack.GestureRecognizers.Add(tap);
 
             return stack;
+        }
+
+        async Task Logout(string username, string password)
+        {
+            var passwordEn = WebUtility.UrlEncode(password);
+            var uri = string.Format(@"https://apps.nelft.nhs.uk/ADAuthentication/api/UserSecurity/AuthenticateEncryptedUser?logout={0}&password={1}", username, passwordEn);
+
+            var client = new HttpClient();
+            var response = await client.GetAsync(uri);
+            var userEncryptionString = response.Content.ReadAsStringAsync().Result;
+#if DEBUG
+            Debug.WriteLine("hello");
+#endif
         }
     }
 }

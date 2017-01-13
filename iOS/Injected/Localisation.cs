@@ -2,11 +2,11 @@
 using System.Globalization;
 using System.Threading;
 using Foundation;
-using WODTasticMobile.iOS;
+using MeetingPlanner.iOS;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(Localise))]
-namespace WODTasticMobile.iOS
+namespace MeetingPlanner.iOS
 {
     public class Localise : ILocalise
     {

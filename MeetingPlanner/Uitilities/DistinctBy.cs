@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WODTasticMobile
+namespace MeetingPlanner
 {
     public static class LinqUtility
     {

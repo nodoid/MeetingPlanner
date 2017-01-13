@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace WODTasticMobile
+namespace MeetingPlanner
 {
     public class NameValueCollection : List<KeyValuePair<string, string>>
     {

@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Xamarin.Forms;
 namespace MeetingPlanner
 {
-    public class HorizontalScrollView
+    public class HorizontalScrollView : ScrollView
     {
-        public HorizontalScrollView()
-        {
-        }
     }
 }

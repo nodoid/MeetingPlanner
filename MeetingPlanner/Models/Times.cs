@@ -1,10 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
+using SQLite.Net.Attributes;
+
 namespace MeetingPlanner
 {
-    public class Times
+    public class BaseTimes
     {
-        public Times()
-        {
-        }
+        public List<Times> Times { get; set; }
+    }
+
+    public class BaseTime
+    {
+        public Times Times { get; set; }
+    }
+
+    public class Times : IInterface
+    {
+        public int id { get; set; }
+
+        public int MeetingId { get; set; }
+
+        public string Time { get; set; }
     }
 }

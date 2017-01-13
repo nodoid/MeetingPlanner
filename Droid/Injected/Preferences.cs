@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using WODTasticMobile.Droid;
+﻿using System.Collections.Generic;
+using MeetingPlanner.Droid;
 
 [assembly: Xamarin.Forms.Dependency(typeof(UserSettings))]
-namespace WODTasticMobile.Droid
+namespace MeetingPlanner.Droid
 {
     public class UserSettings : Java.Lang.Object, IUserSettings
     {

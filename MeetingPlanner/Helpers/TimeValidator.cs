@@ -1,10 +1,13 @@
-﻿using System;
+﻿using System.Text.RegularExpressions;
 namespace MeetingPlanner
 {
-    public class TimeValidator
+    public static class TimeValidator
     {
-        public TimeValidator()
+        static string nums = "^[0-9:-]";
+
+        public static bool TimeCheck(this string check)
         {
+            return Regex.IsMatch(check, nums);
         }
     }
 }

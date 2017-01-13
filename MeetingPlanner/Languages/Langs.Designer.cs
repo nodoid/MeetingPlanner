@@ -16,7 +16,7 @@ namespace MeetingPlanner.Languages {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Langs {
+    public class Langs {
         
         private static System.Resources.ResourceManager resourceMan;
         
@@ -27,10 +27,10 @@ namespace MeetingPlanner.Languages {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static System.Resources.ResourceManager ResourceManager {
+        public static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Langs.resx", typeof(Langs).GetTypeInfo().Assembly);
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("MeetingPlanner.Languages.Langs", typeof(Langs).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -38,12 +38,660 @@ namespace MeetingPlanner.Languages {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static System.Globalization.CultureInfo Culture {
+        public static System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        public static string Error_NetworkTitle {
+            get {
+                return ResourceManager.GetString("Error_NetworkTitle", resourceCulture);
+            }
+        }
+        
+        public static string Error_NetworkMessage {
+            get {
+                return ResourceManager.GetString("Error_NetworkMessage", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message_Login_Fail {
+            get {
+                return ResourceManager.GetString("Error_Message_Login_Fail", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message_Login_No_User {
+            get {
+                return ResourceManager.GetString("Error_Message_Login_No_User", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message_Times_Fail {
+            get {
+                return ResourceManager.GetString("Error_Message_Times_Fail", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message_Times_Bad {
+            get {
+                return ResourceManager.GetString("Error_Message_Times_Bad", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message_Times_Invalid {
+            get {
+                return ResourceManager.GetString("Error_Message_Times_Invalid", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message_Email_Fail {
+            get {
+                return ResourceManager.GetString("Error_Message_Email_Fail", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message_Email_Bad {
+            get {
+                return ResourceManager.GetString("Error_Message_Email_Bad", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message_Email_Invalid {
+            get {
+                return ResourceManager.GetString("Error_Message_Email_Invalid", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message_Names_Invalid {
+            get {
+                return ResourceManager.GetString("Error_Message_Names_Invalid", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message_PollTitle {
+            get {
+                return ResourceManager.GetString("Error_Message_PollTitle", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message_Poll_NoPoll {
+            get {
+                return ResourceManager.GetString("Error_Message_Poll_NoPoll", resourceCulture);
+            }
+        }
+        
+        public static string Notifier_MeetingsTitle {
+            get {
+                return ResourceManager.GetString("Notifier_MeetingsTitle", resourceCulture);
+            }
+        }
+        
+        public static string Notifier_MeetingsOne {
+            get {
+                return ResourceManager.GetString("Notifier_MeetingsOne", resourceCulture);
+            }
+        }
+        
+        public static string Notifier_MeetingsNew {
+            get {
+                return ResourceManager.GetString("Notifier_MeetingsNew", resourceCulture);
+            }
+        }
+        
+        public static string Notifier_MeetingsNewPl {
+            get {
+                return ResourceManager.GetString("Notifier_MeetingsNewPl", resourceCulture);
+            }
+        }
+        
+        public static string Notifier_MeetingsNone {
+            get {
+                return ResourceManager.GetString("Notifier_MeetingsNone", resourceCulture);
+            }
+        }
+        
+        public static string MeetingWarn_Title {
+            get {
+                return ResourceManager.GetString("MeetingWarn_Title", resourceCulture);
+            }
+        }
+        
+        public static string MeetingWarn_Message {
+            get {
+                return ResourceManager.GetString("MeetingWarn_Message", resourceCulture);
+            }
+        }
+        
+        public static string MeetingWarn_View {
+            get {
+                return ResourceManager.GetString("MeetingWarn_View", resourceCulture);
+            }
+        }
+        
+        public static string General_OK {
+            get {
+                return ResourceManager.GetString("General_OK", resourceCulture);
+            }
+        }
+        
+        public static string General_Cancel {
+            get {
+                return ResourceManager.GetString("General_Cancel", resourceCulture);
+            }
+        }
+        
+        public static string General_Set {
+            get {
+                return ResourceManager.GetString("General_Set", resourceCulture);
+            }
+        }
+        
+        public static string General_Clear {
+            get {
+                return ResourceManager.GetString("General_Clear", resourceCulture);
+            }
+        }
+        
+        public static string General_AppName {
+            get {
+                return ResourceManager.GetString("General_AppName", resourceCulture);
+            }
+        }
+        
+        public static string Spinner_LoggingIn {
+            get {
+                return ResourceManager.GetString("Spinner_LoggingIn", resourceCulture);
+            }
+        }
+        
+        public static string Spinner_GettingData {
+            get {
+                return ResourceManager.GetString("Spinner_GettingData", resourceCulture);
+            }
+        }
+        
+        public static string Spinner_UpdatingData {
+            get {
+                return ResourceManager.GetString("Spinner_UpdatingData", resourceCulture);
+            }
+        }
+        
+        public static string Spinner_Wait {
+            get {
+                return ResourceManager.GetString("Spinner_Wait", resourceCulture);
+            }
+        }
+        
+        public static string Menu_NewMeeting {
+            get {
+                return ResourceManager.GetString("Menu_NewMeeting", resourceCulture);
+            }
+        }
+        
+        public static string Menu_Upcoming {
+            get {
+                return ResourceManager.GetString("Menu_Upcoming", resourceCulture);
+            }
+        }
+        
+        public static string Menu_Cancel {
+            get {
+                return ResourceManager.GetString("Menu_Cancel", resourceCulture);
+            }
+        }
+        
+        public static string Menu_Pending {
+            get {
+                return ResourceManager.GetString("Menu_Pending", resourceCulture);
+            }
+        }
+        
+        public static string Menu_Help {
+            get {
+                return ResourceManager.GetString("Menu_Help", resourceCulture);
+            }
+        }
+        
+        public static string Menu_Logout {
+            get {
+                return ResourceManager.GetString("Menu_Logout", resourceCulture);
+            }
+        }
+        
+        public static string Menu_CheckForMeetings {
+            get {
+                return ResourceManager.GetString("Menu_CheckForMeetings", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_General {
+            get {
+                return ResourceManager.GetString("NewAppt_General", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_Date {
+            get {
+                return ResourceManager.GetString("NewAppt_Date", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_TimeSlot {
+            get {
+                return ResourceManager.GetString("NewAppt_TimeSlot", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_Done {
+            get {
+                return ResourceManager.GetString("NewAppt_Done", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_Title {
+            get {
+                return ResourceManager.GetString("NewAppt_Title", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_Location {
+            get {
+                return ResourceManager.GetString("NewAppt_Location", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_Description {
+            get {
+                return ResourceManager.GetString("NewAppt_Description", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_YourName {
+            get {
+                return ResourceManager.GetString("NewAppt_YourName", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_DateTitle {
+            get {
+                return ResourceManager.GetString("NewAppt_DateTitle", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_Selected {
+            get {
+                return ResourceManager.GetString("NewAppt_Selected", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_TimeTitle {
+            get {
+                return ResourceManager.GetString("NewAppt_TimeTitle", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_TimeSubtitle {
+            get {
+                return ResourceManager.GetString("NewAppt_TimeSubtitle", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_TimeAddMore {
+            get {
+                return ResourceManager.GetString("NewAppt_TimeAddMore", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_Time {
+            get {
+                return ResourceManager.GetString("NewAppt_Time", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_InviteTitle {
+            get {
+                return ResourceManager.GetString("NewAppt_InviteTitle", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_InviteSub {
+            get {
+                return ResourceManager.GetString("NewAppt_InviteSub", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_InvitePersonal {
+            get {
+                return ResourceManager.GetString("NewAppt_InvitePersonal", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_InviteDoneTitle {
+            get {
+                return ResourceManager.GetString("NewAppt_InviteDoneTitle", resourceCulture);
+            }
+        }
+        
+        public static string NewAppt_InviteDoneMessage {
+            get {
+                return ResourceManager.GetString("NewAppt_InviteDoneMessage", resourceCulture);
+            }
+        }
+        
+        public static string Login_Title {
+            get {
+                return ResourceManager.GetString("Login_Title", resourceCulture);
+            }
+        }
+        
+        public static string Login_Username {
+            get {
+                return ResourceManager.GetString("Login_Username", resourceCulture);
+            }
+        }
+        
+        public static string Login_Password {
+            get {
+                return ResourceManager.GetString("Login_Password", resourceCulture);
+            }
+        }
+        
+        public static string Login_Button {
+            get {
+                return ResourceManager.GetString("Login_Button", resourceCulture);
+            }
+        }
+        
+        public static string Pending_Accept {
+            get {
+                return ResourceManager.GetString("Pending_Accept", resourceCulture);
+            }
+        }
+        
+        public static string Cancel_Title {
+            get {
+                return ResourceManager.GetString("Cancel_Title", resourceCulture);
+            }
+        }
+        
+        public static string Cancel_Message {
+            get {
+                return ResourceManager.GetString("Cancel_Message", resourceCulture);
+            }
+        }
+        
+        public static string List_Room {
+            get {
+                return ResourceManager.GetString("List_Room", resourceCulture);
+            }
+        }
+        
+        public static string List_Length {
+            get {
+                return ResourceManager.GetString("List_Length", resourceCulture);
+            }
+        }
+        
+        public static string List_Date {
+            get {
+                return ResourceManager.GetString("List_Date", resourceCulture);
+            }
+        }
+        
+        public static string List_Attending {
+            get {
+                return ResourceManager.GetString("List_Attending", resourceCulture);
+            }
+        }
+        
+        public static string List_Organiser {
+            get {
+                return ResourceManager.GetString("List_Organiser", resourceCulture);
+            }
+        }
+        
+        public static string List_Delete {
+            get {
+                return ResourceManager.GetString("List_Delete", resourceCulture);
+            }
+        }
+        
+        public static string Poll_Title {
+            get {
+                return ResourceManager.GetString("Poll_Title", resourceCulture);
+            }
+        }
+        
+        public static string Poll_Invited {
+            get {
+                return ResourceManager.GetString("Poll_Invited", resourceCulture);
+            }
+        }
+        
+        public static string Poll_Venue {
+            get {
+                return ResourceManager.GetString("Poll_Venue", resourceCulture);
+            }
+        }
+        
+        public static string Poll_Room {
+            get {
+                return ResourceManager.GetString("Poll_Room", resourceCulture);
+            }
+        }
+        
+        public static string Poll_Attending {
+            get {
+                return ResourceManager.GetString("Poll_Attending", resourceCulture);
+            }
+        }
+        
+        public static string Day_Monday {
+            get {
+                return ResourceManager.GetString("Day_Monday", resourceCulture);
+            }
+        }
+        
+        public static string Day_Tuesday {
+            get {
+                return ResourceManager.GetString("Day_Tuesday", resourceCulture);
+            }
+        }
+        
+        public static string Day_Wednesday {
+            get {
+                return ResourceManager.GetString("Day_Wednesday", resourceCulture);
+            }
+        }
+        
+        public static string Day_Thursday {
+            get {
+                return ResourceManager.GetString("Day_Thursday", resourceCulture);
+            }
+        }
+        
+        public static string Day_Friday {
+            get {
+                return ResourceManager.GetString("Day_Friday", resourceCulture);
+            }
+        }
+        
+        public static string Day_Saturday {
+            get {
+                return ResourceManager.GetString("Day_Saturday", resourceCulture);
+            }
+        }
+        
+        public static string Day_Sunday {
+            get {
+                return ResourceManager.GetString("Day_Sunday", resourceCulture);
+            }
+        }
+        
+        public static string Month_Jan {
+            get {
+                return ResourceManager.GetString("Month_Jan", resourceCulture);
+            }
+        }
+        
+        public static string Month_Feb {
+            get {
+                return ResourceManager.GetString("Month_Feb", resourceCulture);
+            }
+        }
+        
+        public static string Month_Mar {
+            get {
+                return ResourceManager.GetString("Month_Mar", resourceCulture);
+            }
+        }
+        
+        public static string Month_Apr {
+            get {
+                return ResourceManager.GetString("Month_Apr", resourceCulture);
+            }
+        }
+        
+        public static string Month_May {
+            get {
+                return ResourceManager.GetString("Month_May", resourceCulture);
+            }
+        }
+        
+        public static string Month_Jun {
+            get {
+                return ResourceManager.GetString("Month_Jun", resourceCulture);
+            }
+        }
+        
+        public static string Month_Jul {
+            get {
+                return ResourceManager.GetString("Month_Jul", resourceCulture);
+            }
+        }
+        
+        public static string Month_Aug {
+            get {
+                return ResourceManager.GetString("Month_Aug", resourceCulture);
+            }
+        }
+        
+        public static string Month_Sep {
+            get {
+                return ResourceManager.GetString("Month_Sep", resourceCulture);
+            }
+        }
+        
+        public static string Month_Oct {
+            get {
+                return ResourceManager.GetString("Month_Oct", resourceCulture);
+            }
+        }
+        
+        public static string Month_Nov {
+            get {
+                return ResourceManager.GetString("Month_Nov", resourceCulture);
+            }
+        }
+        
+        public static string Month_Dec {
+            get {
+                return ResourceManager.GetString("Month_Dec", resourceCulture);
+            }
+        }
+        
+        public static string Help_Title {
+            get {
+                return ResourceManager.GetString("Help_Title", resourceCulture);
+            }
+        }
+        
+        public static string Help_Version {
+            get {
+                return ResourceManager.GetString("Help_Version", resourceCulture);
+            }
+        }
+        
+        public static string Help_Message {
+            get {
+                return ResourceManager.GetString("Help_Message", resourceCulture);
+            }
+        }
+        
+        public static string Helper_MeetingTitle {
+            get {
+                return ResourceManager.GetString("Helper_MeetingTitle", resourceCulture);
+            }
+        }
+        
+        public static string Helper_MeetingYourName {
+            get {
+                return ResourceManager.GetString("Helper_MeetingYourName", resourceCulture);
+            }
+        }
+        
+        public static string Helper_MeetingLocation {
+            get {
+                return ResourceManager.GetString("Helper_MeetingLocation", resourceCulture);
+            }
+        }
+        
+        public static string Helper_MeetingDescription {
+            get {
+                return ResourceManager.GetString("Helper_MeetingDescription", resourceCulture);
+            }
+        }
+        
+        public static string Helper_Time {
+            get {
+                return ResourceManager.GetString("Helper_Time", resourceCulture);
+            }
+        }
+        
+        public static string Helper_EmailsOne {
+            get {
+                return ResourceManager.GetString("Helper_EmailsOne", resourceCulture);
+            }
+        }
+        
+        public static string Helper_EmailsTwo {
+            get {
+                return ResourceManager.GetString("Helper_EmailsTwo", resourceCulture);
+            }
+        }
+        
+        public static string Helper_EmailsThree {
+            get {
+                return ResourceManager.GetString("Helper_EmailsThree", resourceCulture);
+            }
+        }
+        
+        public static string Helper_PersonalMessageOne {
+            get {
+                return ResourceManager.GetString("Helper_PersonalMessageOne", resourceCulture);
+            }
+        }
+        
+        public static string Helper_PersonalMessageTwo {
+            get {
+                return ResourceManager.GetString("Helper_PersonalMessageTwo", resourceCulture);
+            }
+        }
+        
+        public static string Logout_Title {
+            get {
+                return ResourceManager.GetString("Logout_Title", resourceCulture);
+            }
+        }
+        
+        public static string Logout_Message {
+            get {
+                return ResourceManager.GetString("Logout_Message", resourceCulture);
             }
         }
     }

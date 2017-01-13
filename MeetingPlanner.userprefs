@@ -1,1 +1,65 @@
-﻿<Properties StartupConfiguration="{3E74578F-EB72-434C-AFAD-366B68F4AC9C}|Default" />
+﻿<Properties StartupConfiguration="{EDC452A7-DA3E-4C49-9520-889B62A7BA08}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MeetingPlanner/UI/Meetings/Attending.cs">
+    <Files>
+      <File FileName="MeetingPlanner/UI/Meetings/Attending.cs" Line="17" Column="10" />
+      <File FileName="MeetingPlanner/Models/Polling.cs" Line="76" Column="29" />
+      <File FileName="MeetingPlanner/Models/Attendees.cs" Line="8" Column="30" />
+      <File FileName="MeetingPlanner/Models/Meeting.cs" Line="8" Column="28" />
+      <File FileName="MeetingPlanner/Models/AppointmentList.cs" Line="9" Column="36" />
+      <File FileName="MeetingPlanner/Models/MeetingSchedule.cs" Line="1" Column="1" />
+      <File FileName="MeetingPlanner/Models/Times.cs" Line="15" Column="6" />
+      <File FileName="MeetingPlanner/UI/Meetings/NewMeeting.cs" Line="249" Column="11" />
+      <File FileName="iOS/Injected/SQLUtils.cs" Line="26" Column="2" />
+      <File FileName="MeetingPlanner/UI/Login/Login.cs" Line="118" Column="107" />
+      <File FileName="MeetingPlanner/UI/Topbar/MenuView.cs" Line="64" Column="27" />
+      <File FileName="MeetingPlanner/Languages/Langs.resx" Line="284" Column="214" />
+      <File FileName="MeetingPlanner/UI/Meetings/Invites.cs" Line="49" Column="60" />
+      <File FileName="MeetingPlanner/Helpers/EmailVerify.cs" Line="12" Column="78" />
+      <File FileName="MeetingPlanner/Webserivces/Webservices.cs" Line="169" Column="1" />
+      <File FileName="MeetingPlanner/MeetingPlanner.cs" Line="1" Column="1" />
+      <File FileName="MeetingPlanner/Constants/Constants.cs" Line="37" Column="9" />
+      <File FileName="MeetingPlanner/UI/Meetings/Pending.cs" Line="104" Column="13" />
+      <File FileName="MeetingPlanner/UI/Meetings/Upcoming.cs" Line="121" Column="177" />
+      <File FileName="MeetingPlanner/UI/Main/MainPage.cs" Line="1" Column="1" />
+      <File FileName="MeetingPlanner/Helpers/DataGatherer.cs" Line="32" Column="126" />
+      <File FileName="iOS/Injected/NetworkSpinner.cs" Line="70" Column="1" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="MeetingPlanner/Models/Department.cs" Line="1" Column="1" />
+      <File FileName="MeetingPlanner/Models/Encryption.cs" Line="1" Column="1" />
+      <File FileName="MeetingPlanner/Models/Location.cs" Line="1" Column="1" />
+      <File FileName="iOS/AppDelegate.cs" Line="27" Column="51" />
+      <File FileName="Droid/MainActivity.cs" Line="23" Column="13" />
+      <File FileName="Droid/Splash.cs" Line="14" Column="49" />
+      <File FileName="Components/hockeyappandroid-4.1.0.3/samples/HockeyAppSampleAndroid/HockeyAppSampleAndroid/MainActivity.cs" Line="63" Column="4" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MeetingPlanner" expanded="True">
+            <Node name="MeetingPlanner" expanded="True">
+              <Node name="UI" expanded="True">
+                <Node name="Meetings" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="MeetingPlanner.Droid" expanded="True">
+              <Node name="References" expanded="True" />
+            </Node>
+            <Node name="MeetingPlanner.iOS" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/PFJ/Developer/MeetingPlanner/MeetingPlanner/Webserivces/Webservices.cs" relfile="MeetingPlanner/Webserivces/Webservices.cs" line="169" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MeetingPlanner/MeetingPlanner/Helpers/DataGatherer.cs" relfile="MeetingPlanner/Helpers/DataGatherer.cs" line="33" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MeetingPlanner HideGettingStarted="True" />
+  <MonoDevelop.Ide.ItemProperties.MeetingPlanner.Droid PreferredExecutionTarget="Android.192.168.66.101:5555" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.MeetingPlanner.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+</Properties>

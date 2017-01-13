@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using Xamarin.Forms;
 using System.Collections.Generic;
@@ -6,7 +6,6 @@ using MeetingPlanner.Languages;
 using System.Collections.ObjectModel;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Extensions;
-using Messier16.Forms.Controls;
 
 namespace MeetingPlanner
 {
@@ -26,6 +25,7 @@ namespace MeetingPlanner
                 HasUnevenRows = true,
                 SeparatorVisibility = SeparatorVisibility.None,
                 WidthRequest = App.ScreenSize.Width * .75,
+                MinimumWidthRequest = App.ScreenSize.Width * .75,
                 HeightRequest = App.ScreenSize.Height * .55
             };
 
@@ -74,21 +74,21 @@ namespace MeetingPlanner
             var lblName = new Label
             {
                 Text = "title",
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
                 FontSize = 14
             };
 
             var lblEmail = new Label
             {
                 Text = "title",
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
                 FontSize = 14
             };
 
             var lblAttending = new Label
             {
                 Text = Langs.List_Attending,
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontSize = 14
             };
@@ -96,7 +96,7 @@ namespace MeetingPlanner
             var lblOrganisers = new Label
             {
                 Text = Langs.List_Organiser,
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontSize = 14
             };

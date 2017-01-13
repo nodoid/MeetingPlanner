@@ -1,5 +1,5 @@
 ﻿using System;
-namespace WODTasticMobile
+namespace MeetingPlanner
 {
     public class UIChangedEventArgs : EventArgs
     {

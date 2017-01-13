@@ -1,12 +1,12 @@
 ﻿using System;
 using Foundation;
 using UIKit;
-using WODTasticMobile.iOS;
+using MeetingPlanner.iOS;
 using Xamarin.Forms;
 using CoreGraphics;
 
 [assembly: Dependency(typeof(NetworkSpinner))]
-namespace WODTasticMobile.iOS
+namespace MeetingPlanner.iOS
 {
     public class NetworkSpinner : INetworkSpinner
     {
@@ -60,7 +60,16 @@ namespace WODTasticMobile.iOS
             }
 
             spinView.BringSubviewToFront(spinSpinner);
-            UIApplication.SharedApplication.KeyWindow.RootViewController.Add(spinView);
+            try
+            {
+                UIApplication.SharedApplication.KeyWindow.RootViewController.Add(spinView);
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                Console.WriteLine("Exception in netspinner - {0}--{1}", ex.Message, ex.InnerException);
+#endif
+            }
             if (on)
                 spinSpinner.StartAnimating();
             else

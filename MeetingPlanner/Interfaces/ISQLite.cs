@@ -1,6 +1,6 @@
 ﻿using SQLite.Net.Interop;
 
-namespace WODTasticMobile
+namespace MeetingPlanner
 {
     public interface ISQLite
     {

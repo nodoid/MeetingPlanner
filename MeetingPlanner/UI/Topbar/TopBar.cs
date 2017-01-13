@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 
-namespace turtlewax
+namespace MeetingPlanner
 {
     using Xamarin.Forms;
 
@@ -30,10 +30,20 @@ namespace turtlewax
             grid = new Grid
             {
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Constants.Green,
+                BackgroundColor = Constants.NELFTMagenta,
                 HeightRequest = 52,
                 MinimumHeightRequest = 52,
                 WidthRequest = App.ScreenSize.Width,
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition{Width = 52},
+                    new ColumnDefinition{Width = App.ScreenSize.Width - 104},
+                    new ColumnDefinition{Width = 52}
+                },
+                RowDefinitions =
+                {
+                    new RowDefinition{Height = GridLength.Star}
+                }
             };
 
             var padView = new ContentView
@@ -62,7 +72,7 @@ namespace turtlewax
                 var gestLeft = new TapGestureRecognizer
                 {
                     NumberOfTapsRequired = 1,
-                    Command = new Command(async() => await currentPage.Navigation.PopAsync())
+                    Command = new Command(async () => await currentPage.Navigation.PopAsync())
                 };
                 leftCell.GestureRecognizers.Add(gestLeft);
                 leftView.Content = new StackLayout
@@ -89,7 +99,7 @@ namespace turtlewax
             {
                 title = new Image
                 {
-                    Source = "headerlogo.png",
+                    Source = "schedule",
                     HeightRequest = 42,
                     WidthRequest = 42,
                     VerticalOptions = LayoutOptions.Center
@@ -117,7 +127,8 @@ namespace turtlewax
                     Children = { rightCell, padView }
                 };
 
-                menu = new MenuView();
+                if (menu == null)
+                    menu = new MenuView();
                 menu.HeightRequest = App.ScreenSize.Height - grid.HeightRequest;
 
                 var gestRight = new TapGestureRecognizer
@@ -129,16 +140,18 @@ namespace turtlewax
                             bounds.X = App.ScreenSize.Width * .18;
                             if (!App.Self.PanelShowing)
                             {
-                                Device.BeginInvokeOnMainThread(async() =>
+                                Device.BeginInvokeOnMainThread(async () =>
                                     {
                                         panel.WidthRequest = panel.Width + menu.Content.WidthRequest;
-                                            
-                                        panel.Children.Add(new StackLayout
+
+                                        if (panel.Children.Count == 1)
+                                        {
+                                            panel.Children.Add(new StackLayout
                                             {
                                                 Padding = new Thickness(0, FromMain ? -8 : 0),
                                                 Children = { menu }
-                                            }
-                                        );
+                                            });
+                                        }
 
                                         origBounds = panel.Children[1].Bounds;
                                         if (origBounds.X < App.ScreenSize.Width)
@@ -151,38 +164,28 @@ namespace turtlewax
                             }
                             else
                             {
-                                Device.BeginInvokeOnMainThread(async() =>
-                                        await panel.Children[1].LayoutTo(origBounds, 250, Easing.CubicOut)); 
-                                panel.Children.Remove(menu);
-                                //panel.WidthRequest = panel.Width - menu.Content.WidthRequest;
-                                panel.Children[0].Opacity = 1;
-                                App.Self.PanelShowing = false;
+                                Device.BeginInvokeOnMainThread(() =>
+                            {
+                                if (panel.Children.Count > 1)
+                                {
+                                    panel.Children[1].LayoutTo(origBounds, 250, Easing.CubicOut).ContinueWith((t) =>
+                                {
+                                    if (t.IsCompleted)
+                                    {
+                                        Device.BeginInvokeOnMainThread(() =>
+                                                {
+                                                    panel.Children[0].Opacity = 1;
+                                                    App.Self.PanelShowing = false;
+                                                });
+                                    }
+                                });
+                                }
+                            });
                             }
                         })
                 };
                 rightCell.GestureRecognizers.Add(gestRight);
             }
-
-            MessagingCenter.Subscribe<MenuView, string>(this, "Menu", (sender, args) =>
-                {
-                    if (args == "Close")
-                    {
-                        if (App.Self.PanelShowing)
-                        {
-                            Device.BeginInvokeOnMainThread(async() =>
-                                {
-                                    if (panel.Children.Count > 1)
-                                    {
-                                        await panel.Children[1].LayoutTo(origBounds, 250, Easing.CubicOut); 
-                                        panel.Children.Remove(menu);
-                                        panel.Children[0].Opacity = 1;
-                                        App.Self.PanelShowing = false;
-                                    }
-                                });
-                        }
-                    }
-                });
-
             grid.Children.Add(leftView, 0, 0);
             grid.Children.Add(title, 1, 0);
             grid.Children.Add(rightView, 2, 0);

@@ -1,46 +1,8 @@
-﻿using Xamarin.Forms;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using Xamarin.Forms;
 using MeetingPlanner.Languages;
 
 namespace MeetingPlanner
 {
-    public class Appointments : ContentView
-    {
-        ObservableCollection<AppointmentList> appts;
-
-        public Appointments(List<int> apptIds)
-        {
-            appts = new ObservableCollection<AppointmentList>();
-
-            foreach (var id in apptIds)
-                appts.Add(App.Self.DBManager.GetSingleObject<AppointmentList>("id", id.ToString()));
-
-            var listView = new ListView
-            {
-                ItemsSource = appts,
-                HasUnevenRows = true,
-                WidthRequest = App.ScreenSize.Width * .95,
-                HeightRequest = App.ScreenSize.Height * .7,
-                SeparatorVisibility = SeparatorVisibility.None,
-                ItemTemplate = new DataTemplate(typeof(DataListView)),
-            };
-            listView.ItemTapped += ListView_ItemTapped;
-
-            Content = new StackLayout
-            {
-                Orientation = StackOrientation.Vertical,
-                Children = { listView }
-            };
-        }
-
-        void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            var tap = e.Item as AppointmentList;
-            var listAttend = tap.Attendees;
-        }
-    }
-
     public class DataListView : ViewCell
     {
         public DataListView()
@@ -48,7 +10,7 @@ namespace MeetingPlanner
             var lblTitle = new Label
             {
                 Text = "title",
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
                 FontSize = 16,
                 FontAttributes = FontAttributes.Bold
             };
@@ -56,42 +18,42 @@ namespace MeetingPlanner
             var lblDate = new Label
             {
                 Text = "title",
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
                 FontSize = 14
             };
 
             var lblLength = new Label
             {
                 Text = Langs.List_Length,
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
                 FontSize = 14
             };
 
             var lblLengthMins = new Label
             {
                 Text = "title",
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
                 FontSize = 14
             };
 
             var lblRoom = new Label
             {
                 Text = Langs.List_Room,
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
                 FontSize = 14
             };
 
             var lblRoomNumber = new Label
             {
                 Text = "title",
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
                 FontSize = 14
             };
 
             var lblVenue = new Label
             {
                 Text = "title",
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
                 FontSize = 14
             };
 
@@ -110,7 +72,20 @@ namespace MeetingPlanner
                 Padding = new Thickness(8, 0, 8, 8),
                 Children =
                 {
+                    new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        Children =
+                        {
+                            new Label
+                            {
+                                Text = Langs.NewAppt_Title,
+                                TextColor = Constants.NELFTBlue,
+                                FontSize = 14
+                            },
                     lblTitle,
+                        }
+                    },
                     new StackLayout
                     {
                         Orientation = StackOrientation.Horizontal,
@@ -126,7 +101,7 @@ namespace MeetingPlanner
                             {
                                 Text = Langs.List_Date,
                                 FontSize = 14,
-                                TextColor = Color.Blue
+                                TextColor = Constants.NELFTBlue
                             },
                             lblDate
                                 }

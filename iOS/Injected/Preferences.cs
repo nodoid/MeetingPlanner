@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using Foundation;
-using WODTasticMobile.iOS;
-using UIKit;
-using SQLite.Net.Attributes;
+using MeetingPlanner.iOS;
 
 [assembly: Xamarin.Forms.Dependency(typeof(UserSettings))]
-namespace WODTasticMobile.iOS
+namespace MeetingPlanner.iOS
 {
     public class UserSettings : IUserSettings
     {

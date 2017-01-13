@@ -1,4 +1,4 @@
-﻿namespace DeskBooking
+﻿namespace MeetingPlanner
 {
     public class ActiveDirectoryUser
     {

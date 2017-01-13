@@ -1,6 +1,6 @@
-﻿namespace DeskBooking
+﻿namespace MeetingPlanner
 {
-    public interface ILocalize
+    public interface ILocalise
     {
         string GetCurrent();
 

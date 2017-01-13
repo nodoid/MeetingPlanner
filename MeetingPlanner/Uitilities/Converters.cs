@@ -5,7 +5,7 @@ using System.Globalization;
 using System;
 using System.Linq;
 
-namespace WODTasticMobile
+namespace MeetingPlanner
 {
     public static class Converters
     {

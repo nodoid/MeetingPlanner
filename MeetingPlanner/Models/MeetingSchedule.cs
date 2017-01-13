@@ -1,10 +1,10 @@
-﻿using System;
-namespace MeetingPlanner
+﻿namespace MeetingPlanner
 {
-    public class MeetingSchedule
+    public class MeetingSched
     {
-        public MeetingSchedule()
-        {
-        }
+        public bool Selected { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
+        public string Duration { get; set; }
     }
 }

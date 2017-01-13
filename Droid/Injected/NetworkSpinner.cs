@@ -1,9 +1,9 @@
-﻿using WODTasticMobile.Droid;
+﻿using MeetingPlanner.Droid;
 using Xamarin.Forms;
 using Android.App;
 
 [assembly: Dependency(typeof(NetworkSpinner))]
-namespace WODTasticMobile.Droid
+namespace MeetingPlanner.Droid
 {
     public class NetworkSpinner : INetworkSpinner
     {

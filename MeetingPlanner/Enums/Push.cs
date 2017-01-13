@@ -1,7 +1,10 @@
-﻿using System;
-namespace MeetingPlanner
+﻿namespace MeetingPlanner
 {
-    public enum Push
+    public enum DeviceType
     {
+        Android,
+        iOS,
+        WindowsPhone,
+        Windows
     }
 }

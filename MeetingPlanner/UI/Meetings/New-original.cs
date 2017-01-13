@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using Xamarin.Forms;
 using MeetingPlanner.Languages;
@@ -68,19 +68,19 @@ namespace MeetingPlanner
             {
                 Text = Langs.NewAppt_Internal,
                 FontSize = Constants.GeneralFontSize,
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
             };
             var lblExternalEmail = new Label
             {
                 Text = Langs.NewAppt_External,
                 FontSize = Constants.GeneralFontSize,
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
             };
             var lblProposedDates = new Label
             {
                 Text = Langs.NewAppt_ProposedDates,
                 FontSize = Constants.GeneralFontSize,
-                TextColor = Color.Blue,
+                TextColor = Constants.NELFTBlue,
             };
             var btnSend = new Button
             {
@@ -90,7 +90,7 @@ namespace MeetingPlanner
                 TextColor = Color.White,
             };
 
-            var entExternalNames = new Entry
+            var entExternalNames = new CustomEntry
             {
                 HeightRequest = App.ScreenSize.Height * .23,
                 MinimumHeightRequest = App.ScreenSize.Height * .23,

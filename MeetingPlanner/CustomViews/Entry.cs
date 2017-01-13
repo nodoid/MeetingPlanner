@@ -1,10 +1,7 @@
-﻿using System;
+using Xamarin.Forms;
 namespace MeetingPlanner
 {
-    public class Entry
+    public class CustomEntry : Entry
     {
-        public Entry()
-        {
-        }
     }
 }

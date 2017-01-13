@@ -1,10 +1,9 @@
 ﻿using System;
+using Xamarin.Forms;
+
 namespace MeetingPlanner
 {
-    public class Button
+    public class CustomButton : Button
     {
-        public Button()
-        {
-        }
     }
 }

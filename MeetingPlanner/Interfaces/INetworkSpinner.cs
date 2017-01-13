@@ -1,5 +1,4 @@
-﻿using System;
-namespace WODTasticMobile
+﻿namespace MeetingPlanner
 {
     public interface INetworkSpinner
     {
