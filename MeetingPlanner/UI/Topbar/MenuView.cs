@@ -1,4 +1,4 @@
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using System.Collections.Generic;
 using MeetingPlanner.Languages;
 using System.Linq;
@@ -115,7 +115,7 @@ namespace MeetingPlanner
                             case 5:
                                 if (await Application.Current.MainPage.DisplayAlert(Langs.Logout_Title, Langs.Logout_Message, Langs.General_OK, Langs.General_Cancel))
                                 {
-                                    await Logout(App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String), App.Self.UserSettings.LoadSetting<string>("Password", SettingType.String)).ContinueWith((y) =>
+                                    await Logout(App.Self.UserSettings.LoadSetting<string>("UserId", SettingType.String), App.Self.UserSettings.LoadSetting<string>("Password", SettingType.String)).ContinueWith((y) =>
                                     {
                                         if (y.IsCompleted)
                                         {

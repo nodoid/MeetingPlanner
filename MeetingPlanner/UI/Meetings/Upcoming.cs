@@ -73,7 +73,7 @@ namespace MeetingPlanner
             listView.RefreshCommand = new Command(async () =>
 {
     listView.IsRefreshing = true;
-    await Webservices.GetListData<BaseAppointmentList>("getAllAppointments.php", "userId", App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String)).ContinueWith((t) =>
+    await Webservices.GetListData<BaseAppointmentList>("getAllAppointments.php", "userId", App.Self.UserSettings.LoadSetting<string>("UserId", SettingType.String)).ContinueWith((t) =>
     {
         if (t.IsCompleted)
         {
@@ -118,7 +118,7 @@ namespace MeetingPlanner
 
         void PropogateAppts()
         {
-            var appt = App.Self.DBManager.GetListOfObjects<AppointmentList>().Where(t => t.DateDue.Month == DateTime.Now.Month).OrderByDescending(t => t.DateDue.Date).ToList();
+            var appt = App.Self.DBManager.GetListOfObjects<AppointmentList>().Where(t => t.DateDue.Month == 9).OrderByDescending(t => t.DateDue.Date).ToList();
             if (thisWeek)
             {
                 var startOfWeek = DateTime.Now.StartOfWeek();

@@ -37,7 +37,7 @@ namespace MeetingPlanner
             emailAddresses = new List<string>();
             meetingTimes = new List<string>();
             calendarDate = title = myName = loc = /*subloc =*/ message = description = string.Empty;
-            email = App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String);
+            email = App.Self.UserSettings.LoadSetting<string>("UserId", SettingType.String);
             CreateEvents();
             CreateUI();
         }
@@ -129,7 +129,7 @@ namespace MeetingPlanner
                             Length = meetingLength,
                             Room = loc,
                             DateDue = Convert.ToDateTime(calendarDate.Replace("th", "").Replace("st", "").Replace("nd", "").Replace("rd", "")),
-                            UserId = App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String)
+                            UserId = App.Self.UserSettings.LoadSetting<string>("UserId", SettingType.String)
                         };
                         App.Self.DBManager.AddOrUpdateAppointments(appt);
 
@@ -196,7 +196,7 @@ namespace MeetingPlanner
                                     var pollCast = new PollCast
                                     {
                                         PollDataId = pollId,
-                                        AttendeeId = App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String),
+                                        AttendeeId = App.Self.UserSettings.LoadSetting<string>("UserId", SettingType.String),
                                         Accept = 0,
                                         id = App.Self.DBManager.GetLastId<PollCast>(),
                                     };

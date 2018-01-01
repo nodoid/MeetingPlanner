@@ -86,7 +86,8 @@ namespace MeetingPlanner
             if (data.Length != 0)
             {
                 foreach (var v in data)
-                    url += string.Format("/{0}", v.ToLowerInvariant());
+                    url += string.Format("{0}", v);
+                url = url.Split(' ')[0];
             }
 
             U dta = default(U);

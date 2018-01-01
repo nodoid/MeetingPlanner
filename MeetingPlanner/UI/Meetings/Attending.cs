@@ -156,7 +156,7 @@ new StackLayout
 
                 var lblAttend = new Label
                 {
-                    BackgroundColor = MeetingHelper.Invited(appts.MeetingId)[attend].UserId == App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String) ? Constants.NELFTYellow : Constants.LightGrey,
+                    BackgroundColor = MeetingHelper.Invited(appts.MeetingId)[attend].UserId == App.Self.UserSettings.LoadSetting<string>("UserId", SettingType.String) ? Constants.NELFTYellow : Constants.LightGrey,
                     Text = name,
                     FontSize = Constants.SmallEntryFontSize,
                     VerticalTextAlignment = TextAlignment.Center
@@ -174,7 +174,7 @@ new StackLayout
                         Checked = check == 1,
                         HeightRequest = 28,
                         HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        IsEnabled = MeetingHelper.Invited(appts.MeetingId)[attend].UserId == App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String) & !pending
+                        IsEnabled = MeetingHelper.Invited(appts.MeetingId)[attend].UserId == App.Self.UserSettings.LoadSetting<string>("UserId", SettingType.String) & !pending
                     };
                     chkAttend.CheckedChanged += async (sender, e) =>
                     {

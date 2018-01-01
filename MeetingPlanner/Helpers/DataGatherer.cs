@@ -26,27 +26,36 @@ namespace MeetingPlanner
         {
             if (App.Self.IsConnected)
             {
-                var username = App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String);
+                var username = App.Self.UserSettings.LoadSetting<string>("UserId", SettingType.String);
 
                 App.Self.NetSpinner.Spinner(true, Langs.Spinner_GettingData, Langs.Spinner_Wait);
                 var appts = await Webservices.GetListData<BaseAppointmentList>("getAllAppointments.php", "userId", username);
-                var apptList = (from apl in appts.AppointmentList
-                                select apl).ToList();
-
-                App.Self.DBManager.AddOrUpdateAppointments(apptList);
-                var meetings = await Webservices.GetListData<BaseMeeting>("getMeetingsForUserId.php", "userId", username);
-                var meets = (from mtg in meetings.Meeting
-                             select mtg).ToList();
-
-                App.Self.DBManager.AddOrUpdateMeeting(meets);
-                foreach (var m in meets)
+                if (appts != null)
                 {
-                    await GetMeetingData(m.id.ToString());
+                    var apptList = (from apl in appts.AppointmentList
+                                    select apl).ToList();
+
+                    App.Self.DBManager.AddOrUpdateAppointments(apptList);
                 }
 
+                var meetings = await Webservices.GetListData<BaseMeeting>("getMeetingsForUserId.php", "userId", username);
+                if (meetings != null)
+                {
+                    var meets = (from mtg in meetings.Meeting
+                                 select mtg).ToList();
+
+                    App.Self.DBManager.AddOrUpdateMeeting(meets);
+                    foreach (var m in meets)
+                    {
+                        await GetMeetingData(m.id.ToString());
+                    }
+                }
                 App.Self.UserSettings.SaveSetting("LastUpdated", DateTime.Now.ToString("d"), SettingType.String);
                 App.Self.NetSpinner.Spinner(false, Langs.Spinner_GettingData, Langs.Spinner_Wait);
-                Notify(appts.AppointmentList.Count);
+                if (appts != null)
+                {
+                    Notify(appts.AppointmentList.Count);
+                }
             }
             else
                 await Application.Current.MainPage.DisplayAlert(Langs.Error_Message_Login_Fail, Langs.Error_Message_Login_No_User, Langs.General_OK);
@@ -63,10 +72,10 @@ namespace MeetingPlanner
                     return;
                 }
 
-                var username = App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String);
+                var username = App.Self.UserSettings.LoadSetting<string>("UserId", SettingType.String);
 
                 App.Self.NetSpinner.Spinner(true, Langs.Spinner_GettingData, Langs.Spinner_Wait);
-                var appts = await Webservices.GetListData<BaseAppointmentList>("getAppointmentsForDateRange.php", "userId=", username, "&startDate=", lastDate, "&endDate=", DateTime.Now.Date.ToString().Replace('/', '_'));
+                var appts = await Webservices.GetListData<BaseAppointmentList>("getAppointmentsForDateRange.php", "userId=", username, "&startDate=", "01_09_2016", "&endDate=", DateTime.Now.Date.ToString().Replace('/', '_'));
                 if (appts != null)
                 {
                     if (appts.AppointmentList.Count != 0)

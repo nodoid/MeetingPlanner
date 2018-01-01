@@ -10,25 +10,13 @@ namespace MeetingPlanner
 {
     public class Login : BasePage
     {
-        readonly IEncryptionManager encryptionManager;
-
         public Login()
         {
-            encryptionManager = new EncryptionManager();
-
             CreateUI();
         }
 
         void CreateUI()
         {
-            var imgCompany = new Image
-            {
-                IsOpaque = true,
-                Source = "companylogo",
-                HeightRequest = App.ScreenSize.Height * .05,
-                HorizontalOptions = LayoutOptions.FillAndExpand
-            };
-
             var lblLoginTitle = new Label
             {
                 Text = Langs.Login_Title,
@@ -109,7 +97,7 @@ namespace MeetingPlanner
                     if (!string.IsNullOrEmpty(entryUsername.Text) && !string.IsNullOrEmpty(entryPassword.Text))
                     {
                         var user = await LoginUser(entryUsername.Text, entryPassword.Text);
-                        if (user != null)
+                        if (user)
                         {
                             IsEnabled = false;
                             var us = entryUsername.Text;
@@ -158,7 +146,6 @@ namespace MeetingPlanner
                         VerticalOptions = LayoutOptions.StartAndExpand,
                         Children =
                         {
-                            imgCompany,
                     new Label {HeightRequest = 10},
                     lblLoginTitle,
                         }
@@ -191,7 +178,7 @@ namespace MeetingPlanner
 
             Content = CreateContent(contentStack);
 
-            var username = App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String);
+            var username = App.Self.UserSettings.LoadSetting<string>("UserId", SettingType.String);
             var password = App.Self.UserSettings.LoadSetting<string>("Password", SettingType.String);
 
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
@@ -238,31 +225,32 @@ namespace MeetingPlanner
             }
         }
 
-        async Task<ActiveDirectoryUser> LoginUser(string username, string password)
+        async Task<bool> LoginUser(string username, string password)
         {
             if (App.Self.IsConnected)
             {
                 App.Self.NetSpinner.Spinner(true, Langs.Spinner_LoggingIn, Langs.Spinner_Wait);
                 var passwordEn = System.Net.WebUtility.UrlEncode(password);
-                var uri = string.Format(@"https://apps.nelft.nhs.uk/ADAuthentication/api/UserSecurity/AuthenticateEncryptedUser?login={0}&password={1}", username, passwordEn);
+                var uri = string.Format(@"http://www.all-the-johnsons.co.uk/php/login.php?username={0}&password={1}", username, passwordEn);
 
                 var client = new HttpClient();
                 var response = await client.GetAsync(uri);
                 var userEncryptionString = response.Content.ReadAsStringAsync().Result;
-                var encryptionObjects = JsonConvert.DeserializeObject<IEnumerable<Encryption>>(userEncryptionString);
+                var encryptionObjects = JsonConvert.DeserializeObject<LoginDetails>(userEncryptionString);
 
-                var users = encryptionManager.DecryptUsers(encryptionObjects);
-
-                var user = users.FirstOrDefault();
                 App.Self.NetSpinner.Spinner(false, string.Empty, string.Empty);
-                return user;
+
+                if (!string.IsNullOrEmpty(encryptionObjects.Login[0].UserId))
+                    App.Self.UserSettings.SaveSetting<string>("UserId", encryptionObjects.Login[0].UserId, SettingType.String);
+
+                return !string.IsNullOrEmpty(encryptionObjects.Login[0].UserId);
             }
             else
             {
                 await DisplayAlert(Langs.Error_NetworkTitle, Langs.Error_NetworkMessage, Langs.General_OK);
                 App.Self.NetSpinner.Spinner(false, string.Empty, string.Empty);
             }
-            return null;
+            return false;
         }
     }
 }

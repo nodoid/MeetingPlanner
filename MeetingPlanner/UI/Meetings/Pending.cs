@@ -80,7 +80,7 @@ namespace MeetingPlanner
             };
             listView.RefreshCommand = new Command(async () =>
             {
-                await Webservices.GetListData<BaseAppointmentList>("getAllAppointments.php", "userId", App.Self.UserSettings.LoadSetting<string>("Username", SettingType.String)).ContinueWith((t) =>
+                await Webservices.GetListData<BaseAppointmentList>("getAllAppointments.php", "userId", App.Self.UserSettings.LoadSetting<string>("userId", SettingType.String)).ContinueWith((t) =>
     {
         if (t.IsCompleted)
         {

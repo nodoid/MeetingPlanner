@@ -82,7 +82,7 @@ namespace MeetingPlanner
                 };
             }
 
-            dynamic title;
+            Label title = null;
             if (!string.IsNullOrEmpty(Title))
             {
                 title = new Label
@@ -95,7 +95,7 @@ namespace MeetingPlanner
                     Text = Title
                 };
             }
-            else
+            /*else
             {
                 title = new Image
                 {
@@ -110,10 +110,10 @@ namespace MeetingPlanner
                     //Command = new Command(async () => await Navigation.PopToRootAsync(true))
                 };
                 title.GestureRecognizers.Add(imgTap);
-            }
+            }*/
 
             rightCell = new Image();
-            Rectangle origBounds;
+            var origBounds = new Rectangle();
 
             if (!string.IsNullOrEmpty(RightImage))
             {

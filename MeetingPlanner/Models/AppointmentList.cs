@@ -41,7 +41,8 @@ namespace MeetingPlanner
     {
         public static Meeting GetMeeting(int MeetingId)
         {
-            return App.Self.DBManager.GetSingleObject<Meeting>("id", MeetingId.ToString());
+            var _ = App.Self.DBManager.GetSingleObject<Meeting>("id", MeetingId.ToString());
+            return _ ?? new Meeting();
         }
 
         public static Polling GetPolls(int MeetingId)

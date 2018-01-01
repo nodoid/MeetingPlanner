@@ -24,17 +24,16 @@ namespace MeetingPlanner
 
         public static double GeneralFontSize = Device.OS == TargetPlatform.Android ? 16 : 14;
 
+
         public static double SubHeadingFontSize = Device.OS == TargetPlatform.Android ? 20 : 18;
 
 #if DEBUG
         public static string BaseUrl = "http://www.all-the-johnsons.co.uk";
         public static string WorkplaceUrl = "http://www.all-the-johnsons.co.uk/php";
 #else
-        public static string BaseUrl = @"https://apps.nelft.nhs.uk/WorkplaceApi/";
-        public static string WorkplaceUrl = @"https://apps.nelft.nhs.uk/WorkplaceApi/api/workplace";
+		public static string BaseUrl = @"https://apps.nelft.nhs.uk/WorkplaceApi/";
+		public static string WorkplaceUrl = @"https://apps.nelft.nhs.uk/MeetingBookingApi/";
 #endif
-
-
 
         public static string BackgroundFilename = "background_75pc.png";
 
